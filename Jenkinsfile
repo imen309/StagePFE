@@ -5,7 +5,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USERNAME = "youssefrm"
+        DOCKERHUB_USERNAME = "imenmettichi"
         // Ensure Docker credentials are stored securely in Jenkins
     }
 
@@ -16,7 +16,7 @@ pipeline {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: env.BRANCH_NAME]], // Checkout the current branch
-                    userRemoteConfigs: [[url: 'https://github.com/youssefrmili/Ecommerce-APP.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/imen309/StagePFE.git']]
                 ])
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                     for (def service in microservices) {
                         dir(service) {
                             // Run TruffleHog to check for secrets in the repository
-                            sh 'docker run --rm gesellix/trufflehog --json https://github.com/youssefrmili/Ecommerce-APP.git > trufflehog.json'
+                            sh 'docker run --rm gesellix/trufflehog --json https://github.com/imen309/StagePFE.git > trufflehog.json'
                             sh 'cat trufflehog.json' // Output the results
                         }
                     }
