@@ -21,6 +21,7 @@ public class EcommCartApplication {
     SpringApplication.run(EcommCartApplication.class, args);
   }
 
+  //this is a method to execute a task
   @Bean
   public Executor taskExecutor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
